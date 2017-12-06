@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON SandBox</title>
+</head>
+<body>
+    <h1>Heloo its me</h1>
+    <ul id="people">
+    
+    </ul>
+
+    <script>
+//create live server from nodejs
+// npm -g live-server
+//live-server
+//use jsonLint to validate json file
+//Using Ajax call
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      var response = JSON.parse(xhttp.responseText);
+      var people = response.people;
+
+      var output = '';
+      for(i = 0;i < people.length;i++){
+          output += '<li>'+people[i].name+'</li>';
+      }
+      document.getElementById('people').innerHTML = output;
+
+   }
+};
+xhttp.open("GET", "people.json", true);
+xhttp.send();
+
+
+
+  /*      var person ={
+            name : "Swapnil",
+            age : "23",
+            address : {
+                street : "Datta Mandir",
+                city : "NaviMumbai"
+            },
+            friends :["Akshay","Kailash"]
+        }
+
+        // person = JSON.stringify(person);
+        // person = JSON.parse(person);
+
+        var people =[
+            {
+                name : "Kailash",
+                age : 25
+            },
+            {
+                name : "Akshay",
+                age : 23
+            },
+            {
+                name : "Sneha",
+                age : 25
+            }
+        ];
+        // console.log(people[1].age);
+        // console.log(people[0].name);
+        // console.log(people[2].name);
+        
+        var output = '';
+        for(var i = 0;i < people.length;i++){
+          //  console.log(people[i]);
+          output += '<li>'+people[i].name+''+"  "+' '+people[i].age+'</li>';
+        }
+        document.getElementById('people').innerHTML = output;
+*/
+   </script>
+</body>
+</html>
